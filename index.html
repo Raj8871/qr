@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+</head>
+<body>
+  <div class="rajan"></div>
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        <input type="text" id="inputText" placeholder="Enter text or URL" />
+        <button id="generateBtn">Generate QR Code</button>
+        <canvas id="qrCanvas"></canvas>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<style>
+div.rajan {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 10px solid black;
+  background-image: url(https://i.postimg.cc/tg97cXtN/photo-2024-10-21-18-51-30-2.jpg);
+background-size: cover;
+  border-top: 0px; 
+  transition: all 2s ease-in;
+  transform: scale(1.2.5);
+  
+}
+.box 
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 10px;
+    border-radius: 50px;
+  border: 2px solid black;
+  text-size-adjust: 300px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+canvas {
+    margin-top: 20px;
+}
+
+div.rajan:hover {
+  transform: translateY(200px);
+/*background-color:white;
+  transition: all 2s ease-in 1s;
+  transform: rotate(360deg)*/
+}
+div:active {
+  background-color: rgb(00,300,00);
+}
+div:hover {
+  /*background-color:white;*/
+  color:black;
+  font-size: 20px;
+  transition: all 2s ease-in 1s;
+  transform:(1.1.2);
+}
+</style>
+
+<script>
+// Refresh the page after 3 seconds
+setTimeout(() => {
+    window.location.reload();
+}, 3000);
+
+document.getElementById('generateBtn').addEventListener('click', function() {
+    const inputText = document.getElementById('inputText').value;
+    const canvas = document.getElementById('qrCanvas');
+    
+    // Clear the canvas before generating a new QR code
+    const context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Generate QR code if input is not empty
+    if (inputText.trim() !== '') {
+        const qr = new QRious({
+            element: canvas,
+            value: inputText,
+            size: 250 // You can adjust the size here
+        });
+    }
+});
+
+// Page refresh button functionality
+document.getElementById('refreshPageBtn').addEventListener('click', function() {
+    location.reload(); // Refresh the entire page
+});
+
+</script>
